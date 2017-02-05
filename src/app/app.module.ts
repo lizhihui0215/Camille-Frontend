@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { CoreComponent } from './core/core.component';
 import { SharedComponent } from './shared/shared.component';
 import { RegisterComponent } from './register/register.component';
-import {UserService} from "./shared/user.service";
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,9 +20,10 @@ import {UserService} from "./shared/user.service";
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
