@@ -8,7 +8,9 @@ import { CoreComponent } from './core/core.component';
 import { SharedComponent } from './shared/shared.component';
 import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
-
+import { InventoryModule } from './inventory/inventory.module';
+import {UserService} from './shared/user.service';
+import { NavigationComponent } from './inventory/navigation/navigation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,14 +18,16 @@ import { AppRoutingModule } from './app-routing.module';
     CoreComponent,
     SharedComponent,
     RegisterComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    InventoryModule
   ],
-  providers: [ ],
+  providers: [ UserService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

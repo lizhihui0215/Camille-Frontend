@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
+import {UserService} from '../shared/user.service';
+
 
 @Component({
   selector: 'app-login',
@@ -8,14 +10,18 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public route: Router) { }
+  constructor(public route: Router, public userServices: UserService) { }
 
   ngOnInit() {
 
   }
 
-  onSubmit(form: any): void {
-    console.log(form.value);
+  onSubmit(username: string, password: string): void {
+    this.userServices.login(username, password).then( response => {
+      if (response.code === 0) {
+        this.route.navigate(['navigation']);
+      }
+    });
   }
 
 }
