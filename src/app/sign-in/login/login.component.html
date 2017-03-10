@@ -1,0 +1,13 @@
+<div class="container">
+  <ngb-alert [type]="alert.type" (close)="alert.hidden = true" [hidden]="alert.hidden">{{ alert.message }}</ngb-alert>
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value.username, loginForm.value.password)">
+    <div class="card  card-inverse  text-center">
+      <div class="card-block">
+        <h1 class="card-title">Login</h1>
+        <input type="text" class="form-control" placeholder="Username" ngModel name="username"  aria-describedby="basic-addon1">
+        <input type="password" class="form-control" placeholder="Password" ngModel name="password"  aria-describedby="basic-addon1">
+        <button class="btn btn-md btn-primary btn-block" type="submit">Login</button>
+      </div>
+    </div>
+  </form>
+</div>

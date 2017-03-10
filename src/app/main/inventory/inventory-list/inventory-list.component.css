@@ -1,0 +1,17 @@
+.form-control {
+  border: 0;
+}
+
+.table td{
+  padding: 0px;
+  text-align: center;
+}
+.table td input {
+  font-size: 12px;
+}
+
+.table th{
+  font-size: 14px;
+}
+
+

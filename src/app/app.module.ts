@@ -2,32 +2,32 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { CoreComponent } from './core/core.component';
-import { SharedComponent } from './shared/shared.component';
-import { RegisterComponent } from './register/register.component';
+
 import { AppRoutingModule } from './app-routing.module';
-import { InventoryModule } from './inventory/inventory.module';
-import {UserService} from './shared/user.service';
-import { NavigationComponent } from './inventory/navigation/navigation.component';
+import { AppComponent } from './app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import {SignInModule} from "./sign-in/sign-in.module";
+import {CoreModule} from "./core/core.module";
+import {SharedModule} from "./shared/shared.module";
+import {MainModule} from "./main/main.module";
+import {NotEmptyWaringDirective} from "./core/not-empty-waring.directive";
+
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    CoreComponent,
-    SharedComponent,
-    RegisterComponent,
-    NavigationComponent,
   ],
   imports: [
+    CoreModule,
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    InventoryModule
+    NgbModule.forRoot(),
+    SignInModule,
+    SharedModule,
+    MainModule,
   ],
-  providers: [ UserService ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

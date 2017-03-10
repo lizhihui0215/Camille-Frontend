@@ -1,6 +1,6 @@
 import { CamillePage } from './app.po';
 
-describe('camille App', function() {
+describe('camille App', () => {
   let page: CamillePage;
 
   beforeEach(() => {
