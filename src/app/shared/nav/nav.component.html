@@ -7,10 +7,10 @@
   <div class="collapse navbar-collapse" id="containerNavbar">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="[{ outlets: { main: ['inventory'] } }]">Inventory</a>
+        <a class="nav-link" [routerLink]="[{ outlets: { inventory: ['inventory-input'] } }]">Inventory Input</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" [routerLink]="[{ outlets: { inventory: ['inventory-search'] } }]">Inventory Search</a>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
@@ -18,4 +18,4 @@
     </ul>
   </div>
 </nav>
-<router-outlet name="main"></router-outlet>
+<router-outlet name="inventory"></router-outlet>

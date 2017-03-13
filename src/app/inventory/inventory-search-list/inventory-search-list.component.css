@@ -1,0 +1,28 @@
+.form-control {
+  border: 0;
+}
+
+.table {
+  table-layout: fixed;
+}
+
+.table td{
+  padding: 0px;
+  text-align: center;
+}
+.table td input {
+  font-size: 12px;
+}
+
+.table th{
+  font-size: 14px;
+}
+
+.btn {
+  font-size: 12px;
+  border: none;
+}
+
+.dropdown-item{
+  font-size: 12px;
+}

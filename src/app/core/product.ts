@@ -1,4 +1,4 @@
-export enum Season{
+export enum Season {
   None,
   Spring,
   Summer,
@@ -18,24 +18,26 @@ export class Product {
     public inventory: string,
     public season: Season,
     public inDate: Date,
+    public uuid?: string
   ) {
   }
 
-  static emptyProduct(): Product{
-    return new Product('','','','',0,0,0,'',Season.Spring,new Date())
+  static emptyProduct(): Product {
+    return new Product('', '', '', '', 0, 0, 0, '', Season.None, new Date());
   }
 
   isEmpty(): boolean {
     console.log(this.count);
-    return this.serialNumber == ''
-      && this.name == ''
-      && this.brand == ''
-      && this.unit == ''
-      && this.count == 0
-      && this.price == 0
-      && this.money == 0
-      && this.inventory
-      && this.season == Season.None;
+    console.log(Season.None);
+    return this.uuid === ''
+      && this.name === ''
+      && this.brand === ''
+      && this.unit === ''
+      && this.count === 0
+      && this.price === 0
+      && this.money === 0
+      && this.inventory === ''
+      && this.season === Season.None;
   }
 }
 

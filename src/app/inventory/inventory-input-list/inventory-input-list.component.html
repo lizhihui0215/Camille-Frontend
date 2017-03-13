@@ -1,0 +1,86 @@
+<h3>当前录入条数：{{ products.length }}</h3>
+<form #f="ngForm" (ngSubmit)="submitProducts(f)">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>货号</th>
+      <th>品名</th>
+      <th>品牌</th>
+      <th>单位</th>
+      <th>数量</th>
+      <th>单价</th>
+      <th>金额</th>
+      <th>仓库</th>
+      <th>季节</th>
+      <th>未动天数</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr (keydown.delete)="deleteProduct($event, i)" *ngFor="let product of products; let i = index; let isLast = last" >
+      <td>
+        <div class="input-group">
+          <input  type="text" class="form-control" [(ngModel)]="products[i].uuid" name="product-{{i}}-uuid">
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control" [(ngModel)]="products[i].name" name="product-{{i}}-name">
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control"  [(ngModel)]="products[i].brand" name="product-{{i}}-brand">
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control"  [(ngModel)]="products[i].unit" name="product-{{i}}-unit">
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control"  [(ngModel)]="products[i].count" name="product-{{i}}-count">
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control"  [(ngModel)]="products[i].price" name="product-{{i}}-price">
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control"  [(ngModel)]="products[i].money" name="product-{{i}}-money">
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control"  [(ngModel)]="products[i].inventory" name="product-{{i}}-inventory">
+        </div>
+      </td>
+      <td>
+        <!--<div class="input-group">-->
+          <!--<input type="text" class="form-control" [(ngModel)]="products[i].season" name="product-{{i}}-season">-->
+        <!--</div>-->
+        <div ngbDropdown >
+          <!--<button class="btn" id="dropdownMenu1" ngbDropdownToggle>Toggle dropdown</button>-->
+          <button #dropdownInput class="btn btn-secondary" id="dropdownMenu1" ngbDropdownToggle></button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <button (click)="dropdownInput.innerText = 'Spring'; products[i].season = 1;" class="dropdown-item">Spring</button>
+            <button (click)="dropdownInput.innerText = 'Summer'; products[i].season = 2;" class="dropdown-item">Summer</button>
+            <button (click)="dropdownInput.innerText = 'Autumn'; products[i].season = 3;" class="dropdown-item">Autumn</button>
+            <button (click)="dropdownInput.innerText = 'Winter'; products[i].season = 4;" class="dropdown-item">Winter</button>
+          </div>
+        </div>
+      </td>
+      <td (keydown.tab)="addProduct($event, isLast)">
+        <div class="input-group">
+          <input  type="text" class="form-control"  value="{{products[i].inDate | date: 'yyyy/dd/MM' }}" [(ngModel)]="products[i].inDate" name="product-{{i}}-inDate">
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-md btn-primary btn-block" type="submit">Submit</button>
+</form>
+
+

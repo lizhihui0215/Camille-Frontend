@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {InventoryComponent} from "./inventory/inventory.component";
 
 const routes: Routes = [
 ];
@@ -10,4 +9,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class MainRoutingModule { }
+export class InventoryRoutingModule { }

@@ -9,7 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import {SignInModule} from "./sign-in/sign-in.module";
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
-import {MainModule} from "./main/main.module";
+import {InventoryModule} from "./inventory/inventory.module";
 import {NotEmptyWaringDirective} from "./core/not-empty-waring.directive";
 
 @NgModule({
@@ -25,7 +25,7 @@ import {NotEmptyWaringDirective} from "./core/not-empty-waring.directive";
     NgbModule.forRoot(),
     SignInModule,
     SharedModule,
-    MainModule,
+    InventoryModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
