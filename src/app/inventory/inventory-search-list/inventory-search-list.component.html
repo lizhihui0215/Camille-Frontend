@@ -16,10 +16,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr (keydown.delete)="deleteProduct($event, i)" *ngFor="let product of products; let i = index; let isLast = last" >
+    <tr (keydown.delete)="deleteProduct($event, i);" *ngFor="let product of products; let i = index; let isLast = last" >
       <td>
         <div class="input-group">
-          <input  type="text" class="form-control" [(ngModel)]="products[i].serialNumber" name="product-{{i}}-uuid">
+          <input #inputs  type="text" class="form-control" [(ngModel)]="products[i].serialNumber" name="product-{{i}}-serialNumber">
         </div>
       </td>
       <td>
@@ -59,13 +59,12 @@
       </td>
       <td>
         <div ngbDropdown >
-          <!--<button class="btn" id="dropdownMenu1" ngbDropdownToggle>Toggle dropdown</button>-->
-          <button #dropdownInput class="btn btn-secondary" id="dropdownMenu1" ngbDropdownToggle></button>
+          <button type="button" #dropdownInput class="btn btn-secondary" id="dropdownMenu1" ngbDropdownToggle>{{ season(product) }}</button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <button (click)="dropdownInput.innerText = 'Spring'; products[i].season = 1;" class="dropdown-item">Spring</button>
-            <button (click)="dropdownInput.innerText = 'Summer'; products[i].season = 2;" class="dropdown-item">Summer</button>
-            <button (click)="dropdownInput.innerText = 'Autumn'; products[i].season = 3;" class="dropdown-item">Autumn</button>
-            <button (click)="dropdownInput.innerText = 'Winter'; products[i].season = 4;" class="dropdown-item">Winter</button>
+            <button type="button" (click)="seasonChanged('Spring', product)" class="dropdown-item">Spring</button>
+            <button type="button" (click)="seasonChanged('Summer', product)" class="dropdown-item">Summer</button>
+            <button type="button" (click)="seasonChanged('Autumn', product)"  class="dropdown-item">Autumn</button>
+            <button type="button" (click)="seasonChanged('Winter', product)"  class="dropdown-item">Winter</button>
           </div>
         </div>
       </td>

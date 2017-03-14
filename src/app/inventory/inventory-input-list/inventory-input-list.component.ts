@@ -1,7 +1,10 @@
-import {Component, ElementRef, HostListener, Input, OnInit} from '@angular/core';
-import {NgbDropdown} from '@ng-bootstrap/ng-bootstrap';
-import {Product} from "../../core/product";
-import {ProductService} from "../../core/product.service";
+import {
+  Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, QueryList,
+  ViewChildren
+} from '@angular/core';
+import {NgbDateStruct, NgbDropdown} from '@ng-bootstrap/ng-bootstrap';
+import {Product, Season} from '../../core/product';
+import {ProductService} from '../../core/product.service';
 
 
 @Component({
@@ -12,9 +15,29 @@ import {ProductService} from "../../core/product.service";
 export class InventoryInputListComponent implements OnInit {
 
   products: [Product] = [Product.emptyProduct()];
-  @Input() seasonDropDown: NgbDropdown;
-  seasonChanged(test) {
-    console.log(test);
+  @ViewChildren('inputs') inputs: QueryList<ElementRef>;
+
+  selectedStartDate: NgbDateStruct;
+
+  selectStartDate(date: NgbDateStruct, product) {
+    product.inDate = new Date(`${date.year}-${date.month}-${date.day}`);
+  }
+
+  seasonChanged(season: string, product: Product) {
+    switch (season) {
+      case 'Spring':
+        product.season = Season.Spring;
+        break;
+      case 'Summer':
+        product.season = Season.Summer;
+        break;
+      case 'Autumn':
+        product.season = Season.Autumn;
+        break;
+      case 'Winter':
+        product.season = Season.Winter;
+        break;
+    }
   }
 
   constructor(private productServices: ProductService) { }
@@ -26,6 +49,8 @@ export class InventoryInputListComponent implements OnInit {
   deleteProduct(event, index) {
     if (this.products.length > 1) {
       this.products.splice(index, 1);
+      this.products.splice(index, 1);
+      this.inputs.toArray()[index - 1].nativeElement.focus();
     }
   }
 
@@ -35,10 +60,28 @@ export class InventoryInputListComponent implements OnInit {
     }
   }
 
-  submitProducts(f) {
-    this.productServices.save(this.products);
+  season(product: Product): string {
+    let season = '';
+    switch (product.season) {
+      case Season.None:
+        break;
+      case Season.Spring:
+        season = 'Spring';
+        break;
+      case Season.Summer:
+        season = 'Summer';
+        break;
+      case Season.Autumn:
+        season = 'Autumn';
+        break;
+      case Season.Winter:
+        season = 'Winter';
+        break;
+    }
+    return season;
   }
 
-
-
+  commitProducts(f) {
+    this.productServices.save(this.products);
+  }
 }

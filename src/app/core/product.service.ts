@@ -25,7 +25,11 @@ export class ProductService {
 
   public fetchAll(id: number): Promise<ResponseObject<[Product]>> {
     return this.http.post(this.fetchAllURL, {'id': id}).toPromise().then(response => {
-        return response.json() as ResponseObject<[Product]>;
+      const responseObject = response.json() as ResponseObject<[Product]>;
+      responseObject.result.forEach(product => {
+        product.inDate = new Date(product.inDate);
+      });
+      return responseObject;
     }).catch(handleError);
   }
 

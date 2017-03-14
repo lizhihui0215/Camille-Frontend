@@ -30,6 +30,7 @@ export class Product {
     console.log(this.count);
     console.log(Season.None);
     return this.uuid === ''
+      && this.serialNumber === ''
       && this.name === ''
       && this.brand === ''
       && this.unit === ''
